@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Controle de Despesas do Mês</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=IBM+Plex+Mono:wght@400;600&family=Archivo:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <main class="app">
+
+
+    <section class="painel">
+      <p class="rotulo-mes" id="rotuloMes">Despesas do mês</p>
+      <h1>Quanto você gastou?</h1>
+      <p class="instrucao">
+        Informe cada despesa e o valor. Para encerrar e ver o total,
+        digite <strong>0</strong> no valor ou clique em <strong>Fechar conta</strong>.
+      </p>
+
+      <form id="formDespesa" autocomplete="off">
+        <div class="campo">
+          <label for="descricao">Despesa</label>
+          <input type="text" id="descricao" placeholder="Ex.: mercado, transporte, lazer…" maxlength="40">
+        </div>
+
+        <div class="campo">
+          <label for="valor">Valor (R$)</label>
+          <input type="number" id="valor" placeholder="0,00" step="0.01" min="0" required>
+        </div>
+
+        <p class="erro" id="mensagemErro" role="alert"></p>
+
+        <div class="acoes">
+          <button type="submit" class="botao botao-principal">Adicionar despesa</button>
+          <button type="button" class="botao botao-secundario" id="botaoEncerrar">Fechar conta</button>
+        </div>
+      </form>
+
+      <button type="button" class="botao-reiniciar" id="botaoReiniciar" hidden>
+        Começar nova lista
+      </button>
+    </section>
+
+    <section class="area-cupom" aria-live="polite">
+      <div class="cupom" id="cupom">
+        <header class="cupom-cabecalho">
+          <p class="cupom-titulo">MEU CONTROLE FINANCEIRO</p>
+          <p class="cupom-sub">cupom de despesas &middot; <span id="dataCupom"></span></p>
+          <p class="cupom-linha">========================</p>
+        </header>
+
+        <ul class="cupom-itens" id="listaItens">
+          <li class="cupom-vazio" id="avisoVazio">nenhuma despesa registrada</li>
+        </ul>
+
+        <footer class="cupom-rodape">
+          <p class="cupom-linha">------------------------</p>
+          <div class="cupom-total-parcial">
+            <span>ACUMULADO</span>
+            <span id="totalParcial">R$ 0,00</span>
+          </div>
+
+          <div class="cupom-total-final" id="blocoTotalFinal" hidden>
+            <p class="cupom-linha">========================</p>
+            <div class="linha-total">
+              <span>TOTAL DO MÊS</span>
+              <span id="totalFinal">R$ 0,00</span>
+            </div>
+            <p class="cupom-itens-qtd" id="quantidadeItens"></p>
+            <p class="cupom-obrigado">*** conta fechada ***</p>
+          </div>
+        </footer>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
